@@ -1,14 +1,28 @@
-name: Every 5 Minutes Workflow Test
+name: Commit Every 5 Minutes for 24f2008070@ds.study.iitm.ac.in
 
 on:
   schedule:
-    - cron: '*/5 * * * *'    # Runs every 5 minutes
-  workflow_dispatch:           # Enables manual run
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write  # Needed to push commits with GITHUB_TOKEN
 
 jobs:
-  test-run:
+  commit-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Echo my email 24f2008070@ds.study.iitm.ac.in
-        run: echo "This is a test run every 5 minutes for 24f2008070@ds.study.iitm.ac.in"
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Update timestamp (24f2008070@ds.study.iitm.ac.in)
+        run: echo "Last run: $(date -u)" > sync_status.txt
+
+      - name: Commit changes (24f2008070@ds.study.iitm.ac.in)
+        run: |
+          git config user.name "devsync-bot"
+          git config user.email "24f2008070@ds.study.iitm.ac.in"
+          git add sync_status.txt
+          git commit -m "Automated sync at $(date -u) for 24f2008070@ds.study.iitm.ac.in" || echo "No changes to commit"
+          git push
