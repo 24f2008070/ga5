@@ -1,0 +1,26 @@
+name: Daily Commit for 24f2008070@ds.study.iitm.ac.in
+
+on:
+  schedule:
+    # Runs every day at 3:13am UTC (change to your preferred time, must be fixed HH:MM)
+    - cron: '13 3 * * *'
+
+jobs:
+  daily-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make a dummy change (24f2008070@ds.study.iitm.ac.in)
+        run: |
+          echo "Daily update: $(date)" >> daily_log.txt
+
+      - name: Commit changes (24f2008070@ds.study.iitm.ac.in)
+        run: |
+          git config --local user.email "24f2008070@ds.study.iitm.ac.in"
+          git config --local user.name "DevSync Bot"
+          git add daily_log.txt
+          git commit -m "Automated daily update for 24f2008070@ds.study.iitm.ac.in"
+          git push
