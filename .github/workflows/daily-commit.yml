@@ -3,7 +3,7 @@ name: Daily Commit for 24f2008070@ds.study.iitm.ac.in
 on:
   schedule:
     # Runs every day at 3:13am UTC (change to your preferred time, must be fixed HH:MM)
-    - cron: '25 5 * * *'
+    - cron: '28 17 * * *'
 
 jobs:
   daily-commit:
