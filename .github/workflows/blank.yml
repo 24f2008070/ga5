@@ -1,7 +1,9 @@
-name: Immediate Manual Workflow Test
+name: Every 5 Minutes Workflow Test
 
 on:
-  workflow_dispatch:  # Enables manual run
+  schedule:
+    - cron: '*/5 * * * *'    # Runs every 5 minutes
+  workflow_dispatch:           # Enables manual run
 
 jobs:
   test-run:
@@ -9,4 +11,4 @@ jobs:
 
     steps:
       - name: Echo my email 24f2008070@ds.study.iitm.ac.in
-        run: echo "This is a manual test run for 24f2008070@ds.study.iitm.ac.in"
+        run: echo "This is a test run every 5 minutes for 24f2008070@ds.study.iitm.ac.in"
