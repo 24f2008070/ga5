@@ -1,0 +1,12 @@
+name: Immediate Manual Workflow Test
+
+on:
+  workflow_dispatch:  # Enables manual run
+
+jobs:
+  test-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo my email 24f2008070@ds.study.iitm.ac.in
+        run: echo "This is a manual test run for 24f2008070@ds.study.iitm.ac.in"
